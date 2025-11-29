@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #0a0a0f;
+  --foreground: #f8f9fa;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
 }
 
 @theme inline {
@@ -32,12 +34,13 @@ html {
 
 /* Selection color */
 ::selection {
-  background-color: rgba(147, 51, 234, 0.3);
+  background-color: rgba(99, 102, 241, 0.3);
   color: #fff;
 }
 
 /* Focus visible styles */
 *:focus-visible {
-  outline: 2px solid rgba(147, 51, 234, 0.5);
+  outline: 2px solid rgba(99, 102, 241, 0.6);
   outline-offset: 2px;
+  border-radius: 4px;
 }

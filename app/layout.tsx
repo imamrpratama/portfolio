@@ -13,7 +13,49 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio - Imam Rizky Pratama",
+  title:
+    "Imam Rizky Pratama - Full Stack Developer | Laravel, Flutter, Next.js",
+  description:
+    "Full-stack developer specializing in Laravel, Flutter, and Next.js. Creating scalable web applications and mobile solutions with expertise in PHP, MySQL, and modern JavaScript frameworks.",
+  keywords: [
+    "Full Stack Developer",
+    "Laravel Developer",
+    "Flutter Developer",
+    "Next.js",
+    "PHP",
+    "MySQL",
+    "Tailwind CSS",
+    "Web Development",
+    "Mobile Development",
+  ],
+  authors: [{ name: "Imam Rizky Pratama" }],
+  creator: "Imam Rizky Pratama",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://imamrpratama.github.io/portfolio",
+    title: "Imam Rizky Pratama - Full Stack Developer",
+    description:
+      "Full-stack developer specializing in Laravel, Flutter, and Next.js. Creating scalable web applications and mobile solutions.",
+    siteName: "Imam Rizky Pratama Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Imam Rizky Pratama - Full Stack Developer",
+    description:
+      "Full-stack developer specializing in Laravel, Flutter, and Next.js",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
