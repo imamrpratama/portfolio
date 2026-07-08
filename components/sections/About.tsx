@@ -19,10 +19,12 @@ export const About: React.FC<AboutProps> = ({ isVisible }) => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
+          <p className="font-mono text-xs sm:text-sm uppercase tracking-[0.3em] text-orange-600 mb-4">
+            01 — About
+          </p>
+          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-zinc-900">
             About Me
           </h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-indigo-500 to-violet-500 mx-auto rounded-full shadow-lg shadow-indigo-500/50" />
         </div>
 
         <div className="flex flex-col items-center gap-8 sm:gap-10 md:gap-12">
@@ -33,13 +35,13 @@ export const About: React.FC<AboutProps> = ({ isVisible }) => {
                 : "opacity-0 translate-y-10"
             }`}
           >
-            <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
+            <p className="text-base sm:text-lg text-zinc-600 leading-relaxed">
               I'm a passionate full-stack developer with expertise in building
               scalable web applications and cross-platform mobile solutions. I
               love turning complex problems into simple, beautiful, and
               intuitive solutions.
             </p>
-            <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
+            <p className="text-base sm:text-lg text-zinc-600 leading-relaxed">
               With a strong foundation in Laravel and PHP for backend
               development, and Flutter for mobile applications, I create
               seamless user experiences across all platforms.
@@ -53,7 +55,7 @@ export const About: React.FC<AboutProps> = ({ isVisible }) => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 bg-white/5 hover:bg-indigo-500/20 rounded-xl border border-white/10 hover:border-indigo-500/50 transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-indigo-500/20"
+                    className="p-3 bg-white text-zinc-700 rounded-xl border-2 border-zinc-900 shadow-[3px_3px_0_#18181b] hover:-translate-y-0.5 hover:text-orange-600 hover:shadow-[4px_4px_0_#ea580c] transition-all duration-300"
                     aria-label={`Visit my ${social.name} profile`}
                   >
                     <Icon size={24} />

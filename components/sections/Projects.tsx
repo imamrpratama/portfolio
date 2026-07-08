@@ -3,7 +3,6 @@
 import { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { projects } from "@/constants/projects";
-import Image from "next/image";
 
 interface ProjectsProps {
   isVisible: boolean;
@@ -101,11 +100,13 @@ export const Projects: React.FC<ProjectsProps> = ({ isVisible }) => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
+          <p className="font-mono text-xs sm:text-sm uppercase tracking-[0.3em] text-orange-600 mb-4">
+            03 — Work
+          </p>
+          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 text-zinc-900">
             Featured Projects
           </h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-indigo-500 to-violet-500 mx-auto rounded-full mb-4 sm:mb-6 shadow-lg shadow-indigo-500/50" />
-          <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto px-2 sm:px-4">
+          <p className="text-zinc-500 text-base sm:text-lg max-w-2xl mx-auto px-2 sm:px-4">
             A collection of projects showcasing my skills and expertise
           </p>
         </div>
@@ -114,7 +115,7 @@ export const Projects: React.FC<ProjectsProps> = ({ isVisible }) => {
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className={`w-full max-w-lg group bg-slate-900/50 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/5 hover:border-indigo-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/20 hover:scale-[1.02] ${
+              className={`w-full max-w-lg group bg-white rounded-2xl overflow-hidden border-2 border-zinc-900 shadow-[6px_6px_0_#18181b] hover:shadow-[8px_8px_0_#ea580c] hover:-translate-y-1 transition-all duration-300 ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
@@ -122,7 +123,7 @@ export const Projects: React.FC<ProjectsProps> = ({ isVisible }) => {
               style={{ transitionDelay: `${index * 150}ms` }}
             >
               <div
-                className="relative h-41 sm:h-64 md:h-58 overflow-hidden bg-[linear-gradient(to_bottom_right,rgb(99_102_241/0.1),rgb(139_92_246/0.1))] cursor-grab active:cursor-grabbing"
+                className="relative h-48 sm:h-64 overflow-hidden bg-zinc-100 border-b-2 border-zinc-900 cursor-grab active:cursor-grabbing"
                 onTouchStart={(e) => handleTouchStart(project.id, e)}
                 onTouchMove={(e) => handleTouchMove(project.id, e)}
                 onTouchEnd={() => handleTouchEnd(project.id)}
@@ -138,6 +139,7 @@ export const Projects: React.FC<ProjectsProps> = ({ isVisible }) => {
                     alt={`${
                       project.title
                     } screenshot showing ${project.tech.join(", ")}`}
+                    loading="lazy"
                     className={`absolute inset-0 w-full h-full object-contain transition-all duration-700 select-none pointer-events-none ${
                       (activeSlides[project.id] ?? 0) === imgIndex
                         ? "opacity-100 scale-100"
@@ -151,18 +153,23 @@ export const Projects: React.FC<ProjectsProps> = ({ isVisible }) => {
                   <>
                     <button
                       onClick={() => prevSlide(project.id)}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-slate-900/80 hover:bg-indigo-600 text-white p-3 rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110 z-10 backdrop-blur-sm shadow-lg"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 border border-zinc-300 text-zinc-900 hover:bg-zinc-900 hover:text-white p-2.5 rounded-full transition-all duration-300 opacity-100 md:opacity-0 md:group-hover:opacity-100 hover:scale-110 z-10 backdrop-blur-sm shadow-md"
                       aria-label="Previous image"
                     >
                       <ChevronLeft size={20} />
                     </button>
                     <button
                       onClick={() => nextSlide(project.id)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-slate-900/80 hover:bg-indigo-600 text-white p-3 rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110 z-10 backdrop-blur-sm shadow-lg"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 border border-zinc-300 text-zinc-900 hover:bg-zinc-900 hover:text-white p-2.5 rounded-full transition-all duration-300 opacity-100 md:opacity-0 md:group-hover:opacity-100 hover:scale-110 z-10 backdrop-blur-sm shadow-md"
                       aria-label="Next image"
                     >
                       <ChevronRight size={20} />
                     </button>
+
+                    <div className="absolute top-3 right-3 px-2.5 py-1 bg-white/90 border border-zinc-200 backdrop-blur-sm rounded-full text-xs text-zinc-600 z-10">
+                      {(activeSlides[project.id] ?? 0) + 1} /{" "}
+                      {project.images.length}
+                    </div>
 
                     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
                       {project.images.map((_, imgIndex) => (
@@ -176,8 +183,8 @@ export const Projects: React.FC<ProjectsProps> = ({ isVisible }) => {
                           }
                           className={`h-2 rounded-full transition-all duration-300 ${
                             (activeSlides[project.id] ?? 0) === imgIndex
-                              ? "bg-white w-8"
-                              : "bg-white/50 hover:bg-white/75 w-2"
+                              ? "bg-orange-600 w-8"
+                              : "bg-zinc-400 hover:bg-zinc-600 w-2"
                           }`}
                           aria-label={`Go to image ${imgIndex + 1}`}
                         />
@@ -188,7 +195,7 @@ export const Projects: React.FC<ProjectsProps> = ({ isVisible }) => {
               </div>
 
               <div className="p-4 sm:p-6 space-y-3 sm:space-y-4">
-                <h3 className="text-xl sm:text-2xl font-bold group-hover:text-indigo-400 transition-colors">
+                <h3 className="font-display text-xl sm:text-2xl font-bold text-zinc-900 group-hover:text-orange-600 transition-colors">
                   {project.title}
                 </h3>
 
@@ -196,14 +203,14 @@ export const Projects: React.FC<ProjectsProps> = ({ isVisible }) => {
                   {project.tech.map((tech, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1.5 bg-indigo-500/10 text-indigo-300 rounded-xl text-sm border border-indigo-500/20 hover:bg-indigo-500/20 transition-all duration-300"
+                      className="px-3 py-1.5 bg-orange-50 text-orange-700 rounded-full text-sm border border-orange-200 transition-all duration-300"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+                <p className="text-sm sm:text-base text-zinc-600 leading-relaxed">
                   {project.description}
                 </p>
 
@@ -212,10 +219,10 @@ export const Projects: React.FC<ProjectsProps> = ({ isVisible }) => {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 px-5 py-3 bg-[linear-gradient(to_right,rgb(79_70_229),rgb(37_99_235))] hover:bg-[linear-gradient(to_right,rgb(67_56_202),rgb(29_78_216))] rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-indigo-500/50 flex-1 text-sm sm:text-base font-medium"
+                    className="flex items-center justify-center gap-2 px-5 py-3 bg-zinc-900 text-white hover:bg-orange-600 rounded-xl transition-all duration-300 flex-1 text-sm sm:text-base font-medium"
                   >
                     <ExternalLink size={18} />
-                    Link
+                    View Project
                   </a>
                 </div>
               </div>

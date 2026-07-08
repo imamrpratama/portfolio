@@ -18,11 +18,13 @@ export const Skills: React.FC<SkillsProps> = ({ isVisible }) => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
+          <p className="font-mono text-xs sm:text-sm uppercase tracking-[0.3em] text-orange-600 mb-4">
+            02 — Skills
+          </p>
+          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 text-zinc-900">
             Skills & Expertise
           </h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-indigo-500 to-violet-500 mx-auto rounded-full mb-6 shadow-lg shadow-indigo-500/50" />
-          <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
+          <p className="text-zinc-500 text-base sm:text-lg max-w-2xl mx-auto">
             Technologies and tools I use to bring ideas to life
           </p>
         </div>
@@ -31,7 +33,7 @@ export const Skills: React.FC<SkillsProps> = ({ isVisible }) => {
           {skillCategories.map((category, catIndex) => (
             <div
               key={category.title}
-              className={`group bg-slate-900/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-white/5 hover:border-indigo-500/30 transition-all duration-500 hover:scale-[1.02] shadow-xl hover:shadow-indigo-500/10 ${
+              className={`group bg-white rounded-2xl p-6 sm:p-8 border-2 border-zinc-900 shadow-[6px_6px_0_#18181b] hover:shadow-[8px_8px_0_#ea580c] hover:-translate-y-1 transition-all duration-300 ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
@@ -42,34 +44,27 @@ export const Skills: React.FC<SkillsProps> = ({ isVisible }) => {
                 <div
                   className={`h-1 w-12 rounded-full bg-gradient-to-r ${category.color}`}
                 />
-                <h3 className="text-xl sm:text-2xl font-bold text-white">
+                <h3 className="font-display text-xl sm:text-2xl font-bold text-zinc-900">
                   {category.title}
                 </h3>
               </div>
 
-              <div className="space-y-4">
-                {category.skills.map((skill, skillIndex) => {
+              <div className="flex flex-wrap gap-2.5 sm:gap-3">
+                {category.skills.map((skill) => {
                   const Icon = skill.icon;
                   return (
                     <div
                       key={skill.name}
-                      className="group/skill"
-                      style={{
-                        transitionDelay: `${
-                          catIndex * 100 + skillIndex * 50
-                        }ms`,
-                      }}
+                      className="flex items-center gap-2.5 px-4 py-2.5 bg-zinc-50 rounded-xl border border-zinc-200 hover:border-orange-600/50 hover:bg-orange-50 transition-all duration-300"
                     >
-                      <div className="flex items-center gap-3 mb-3">
-                        <div
-                          className={`p-2 rounded-lg bg-gradient-to-br ${category.color} bg-opacity-20`}
-                        >
-                          <Icon className="text-white" size={20} />
-                        </div>
-                        <span className="font-semibold text-base sm:text-lg text-white">
-                          {skill.name}
-                        </span>
+                      <div
+                        className={`p-1.5 rounded-lg bg-gradient-to-br ${category.color}`}
+                      >
+                        <Icon className="text-white" size={16} />
                       </div>
+                      <span className="font-medium text-sm sm:text-base text-zinc-700">
+                        {skill.name}
+                      </span>
                     </div>
                   );
                 })}

@@ -132,6 +132,20 @@ html {
   scroll-padding-top: 80px;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   scrollbar-gutter: stable;
 }
@@ -142,20 +156,18 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.4);
-  border-radius: 10px;
+  background: #f4f0ea;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, rgb(99, 102, 241), rgb(139, 92, 246));
+  background: #d6d3d1;
   border-radius: 10px;
-  border: 2px solid rgba(15, 23, 42, 0.4);
+  border: 2px solid #f4f0ea;
   transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, rgb(79, 70, 229), rgb(124, 58, 237));
-  border: 2px solid rgba(15, 23, 42, 0.2);
+  background: #ea580c;
 }
 
 /* Scroll progress indicator */
@@ -165,9 +177,7 @@ body {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(to right, rgb(99, 102, 241), rgb(139, 92, 246), rgb(99, 102, 241));
   transform-origin: left;
   z-index: 9999;
-  box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
 }
 `;

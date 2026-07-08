@@ -37,10 +37,10 @@ const Portfolio = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white overflow-x-hidden">
+    <div className="min-h-screen bg-[#faf8f5] text-zinc-900 overflow-x-hidden">
       {/* Scroll Progress Indicator */}
       <div
-        className="scroll-progress fixed top-0 left-0 h-1 bg-gradient-to-r from-indigo-500 via-violet-500 to-indigo-500 z-[9999] transition-all duration-150 ease-out"
+        className="scroll-progress fixed top-0 left-0 h-1 bg-orange-600 z-[9999] transition-all duration-150 ease-out"
         style={{ width: `${scrollProgress}%` }}
       />
 
@@ -62,7 +62,7 @@ const Portfolio = () => {
       {/* Floating Scroll to Top Button */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 p-4 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-2xl shadow-2xl shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:scale-110 transition-all duration-300 z-50 backdrop-blur-sm ${
+        className={`fixed bottom-5 right-5 sm:bottom-8 sm:right-8 p-3 sm:p-4 bg-zinc-900 text-white rounded-full shadow-lg hover:bg-orange-600 hover:scale-110 transition-all duration-300 z-50 ${
           showScrollTop
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-16 pointer-events-none"

@@ -18,11 +18,13 @@ export const Contact: React.FC<ContactProps> = ({ isVisible }) => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
+          <p className="font-mono text-xs sm:text-sm uppercase tracking-[0.3em] text-orange-600 mb-4">
+            04 — Contact
+          </p>
+          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 text-zinc-900">
             Let's Connect
           </h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-indigo-500 to-violet-500 mx-auto rounded-full mb-6 shadow-lg shadow-indigo-500/50" />
-          <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto px-2 sm:px-4">
+          <p className="text-zinc-500 text-base sm:text-lg max-w-2xl mx-auto px-2 sm:px-4">
             I'm always open to discussing new projects, creative ideas, or
             opportunities to be part of your visions.
           </p>
@@ -43,10 +45,10 @@ export const Contact: React.FC<ContactProps> = ({ isVisible }) => {
                 href={social.url}
                 target={!isEmail ? "_blank" : undefined}
                 rel={!isEmail ? "noopener noreferrer" : undefined}
-                className={`flex items-center gap-3 px-8 py-4 rounded-2xl transition-all duration-300 hover:scale-110 shadow-lg text-sm sm:text-base font-medium ${
+                className={`flex items-center gap-3 px-8 py-4 rounded-2xl transition-all duration-300 text-sm sm:text-base font-medium ${
                   isEmail
-                    ? "bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 hover:shadow-indigo-500/50"
-                    : "bg-white/5 hover:bg-indigo-500/10 backdrop-blur-md border border-white/10 hover:border-indigo-500/50 hover:shadow-indigo-500/20"
+                    ? "bg-orange-600 text-white hover:bg-orange-700 shadow-lg hover:-translate-y-0.5"
+                    : "bg-white text-zinc-800 border-2 border-zinc-900 shadow-[4px_4px_0_#18181b] hover:-translate-y-0.5 hover:shadow-[5px_5px_0_#ea580c] hover:text-orange-600"
                 }`}
                 aria-label={`${
                   isEmail ? "Send email to" : `Visit my ${social.name} profile`
@@ -60,14 +62,14 @@ export const Contact: React.FC<ContactProps> = ({ isVisible }) => {
         </div>
 
         <div
-          className={`pt-8 border-t border-white/10 transition-all duration-1000 delay-300 ${
+          className={`pt-8 border-t border-zinc-200 transition-all duration-1000 delay-300 ${
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          <p className="text-gray-500 text-xs sm:text-sm">
+          <p className="text-zinc-400 text-xs sm:text-sm">
             © {new Date().getFullYear()} Built with{" "}
-            <span className="text-indigo-400">Next.js</span> &{" "}
-            <span className="text-indigo-400">Tailwind CSS</span>
+            <span className="text-orange-600">Next.js</span> &{" "}
+            <span className="text-orange-600">Tailwind CSS</span>
           </p>
         </div>
       </div>

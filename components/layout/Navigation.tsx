@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { smoothScrollTo } from "@/lib/utils/scroll";
 import { navSections } from "@/constants";
 
@@ -21,11 +22,20 @@ export const Navigation: React.FC<NavigationProps> = ({
     setMobileMenuOpen(false);
   };
 
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileMenuOpen(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [mobileMenuOpen, setMobileMenuOpen]);
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-slate-950/90 backdrop-blur-2xl border-b border-white/5 shadow-2xl shadow-indigo-500/5"
+        isScrolled || mobileMenuOpen
+          ? "bg-[#faf8f5]/90 backdrop-blur-xl border-b border-zinc-200 shadow-sm"
           : "bg-transparent"
       }`}
     >
@@ -33,9 +43,9 @@ export const Navigation: React.FC<NavigationProps> = ({
         <div className="flex items-center justify-between h-20">
           <button
             onClick={() => handleNavClick("home")}
-            className="text-2xl font-bold bg-gradient-to-r from-indigo-400 via-blue-400 to-violet-400 bg-clip-text text-transparent hover:scale-105 transition-all duration-300"
+            className="text-2xl font-bold font-display text-zinc-900 hover:text-orange-600 transition-colors duration-300"
           >
-            Portfolio
+            Imam<span className="text-orange-600">.</span>
           </button>
 
           <div className="hidden md:flex items-center space-x-1">
@@ -45,20 +55,20 @@ export const Navigation: React.FC<NavigationProps> = ({
                 onClick={() => handleNavClick(item)}
                 className={`capitalize px-4 py-2.5 rounded-xl transition-all duration-300 relative ${
                   activeSection === item
-                    ? "text-indigo-400 bg-indigo-500/10"
-                    : "text-gray-400 hover:text-white hover:bg-white/5"
+                    ? "text-orange-600 font-semibold"
+                    : "text-zinc-500 hover:text-zinc-900 hover:bg-zinc-900/5"
                 }`}
               >
                 {item}
                 {activeSection === item && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-indigo-400 to-violet-400 rounded-full" />
+                  <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-orange-600 rounded-full" />
                 )}
               </button>
             ))}
           </div>
 
           <button
-            className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
+            className="md:hidden text-zinc-900 p-2 hover:bg-zinc-900/5 rounded-lg transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle mobile menu"
             aria-expanded={mobileMenuOpen}
@@ -96,6 +106,14 @@ export const Navigation: React.FC<NavigationProps> = ({
         </div>
 
         {mobileMenuOpen && (
+          <div
+            className="md:hidden fixed inset-0 top-20 bg-zinc-900/20 backdrop-blur-sm -z-10"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
+        )}
+
+        {mobileMenuOpen && (
           <div className="md:hidden pb-4 space-y-2 animate-fade-in">
             {navSections.map((item) => (
               <button
@@ -103,8 +121,8 @@ export const Navigation: React.FC<NavigationProps> = ({
                 onClick={() => handleNavClick(item)}
                 className={`block w-full text-left capitalize px-4 py-3 rounded-lg transition-all duration-300 ${
                   activeSection === item
-                    ? "bg-indigo-500/20 text-indigo-400"
-                    : "text-gray-300 hover:bg-white/5"
+                    ? "bg-orange-600/10 text-orange-600 font-semibold"
+                    : "text-zinc-600 hover:bg-zinc-900/5"
                 }`}
               >
                 {item}
